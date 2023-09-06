@@ -12,7 +12,7 @@ export default function NumeroAleatorio(props) {
     <View style={styles.componentContainer}>
       <Text style={styles.componentTitle}>O número aleatório é {numeroAleatorio}</Text>
     </View>
-  )
+  ) 
 }   
 
 const styles = StyleSheet.create({
