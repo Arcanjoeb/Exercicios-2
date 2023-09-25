@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     img: {
         width: 200,
         height: 200,
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#fcfcfc',
         borderRadius: 100,
     },

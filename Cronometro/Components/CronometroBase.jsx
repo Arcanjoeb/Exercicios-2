@@ -21,7 +21,7 @@ export default function Cronometro(props) {
 
                     return { hours, minutes, seconds };
                 });
-            }, 1000);
+            }, 100);
         } else {
             clearInterval(interval);
         }
@@ -122,12 +122,13 @@ const styles = StyleSheet.create({
     Diametro: {
         borderRadius: 10,
         borderWidth: 2,
-        borderColor: '#fa7634'
+        borderColor: '#fa7652'
     },
 
     Scroll: {
         padding: 1,
-        width: 230, maxHeight: 250
+        width: 230, 
+        maxHeight: 250
     },
 
     Map: {
