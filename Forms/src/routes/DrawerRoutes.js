@@ -9,6 +9,7 @@ import StackPessoas from '../screens/Alunos/StackAlunos'
 import StackPessoasAsyncStorage from '../screens/PessoasAsyncStorage/StackPessoasAsyncStorage'
 import StackPessoasFormularioAltoNivel from '../screens/PessoasFormularioAltoNivel/StackPessoasFormularioAltoNivel'
 import Cadastro from '../screens/Cadastro/Cadastro'
+import StackTarefasAsyncStorage from '../screens/TarefasAsyncStorage/StackTarefasAsyncStorage'
 
 const Drawer = createDrawerNavigator()
 
@@ -22,6 +23,7 @@ export default function DrawerRoutes() {
             <Drawer.Screen name="Alunos" component={StackPessoas} />
             <Drawer.Screen name="PessoasAsyncStorage" component={StackPessoasAsyncStorage} />
             <Drawer.Screen name="FormularioAltoNivel" component={StackPessoasFormularioAltoNivel} />
+            <Drawer.Screen name="TarefasAsyncStorage" component={StackTarefasAsyncStorage} />
 
             <Drawer.Screen name="Cadastro" component={Cadastro} />
 
