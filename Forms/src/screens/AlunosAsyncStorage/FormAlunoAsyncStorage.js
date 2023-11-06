@@ -3,27 +3,27 @@ import { StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import Toast from 'react-native-toast-message'
 
-export default function FormPessoa({ navigation, route }) {
+export default function FormAlunoAsyncStorage({ navigation, route }) {
 
-    const { acao, pessoa: pessoaAntiga } = route.params
+    const { acao, Aluno: AlunoAntiga } = route.params
 
-    const [nome, setNome] = useState('')
-    const [matricula, setmatricula] = useState('')
-    const [turno, setturno] = useState('')
-    const [curso, setcurso] = useState('')
+    const [Nome, setNome] = useState('')
+    const [Turno, setTurno] = useState('')
+    const [Sexo, setSexo] = useState('')
+    const [Matricula, setMatricula] = useState('')
 
     const [showMensagemErro, setShowMensagemErro] = useState(false)
 
 
     useEffect(() => {
 
-        console.log('pessoa -> ', pessoaAntiga)
+        console.log('Aluno -> ', AlunoAntiga)
 
-        if (pessoaAntiga) {
-            setNome(pessoaAntiga.nome)
-            setmatricula(pessoaAntiga.matricula)
-            setturno(pessoaAntiga.turno)
-            setcurso(pessoaAntiga.curso)
+        if (AlunoAntiga) {
+            setNome(AlunoAntiga.Nome)
+            setTurno(AlunoAntiga.Turno)
+            setSexo(AlunoAntiga.Sexo)
+            setMatricula(AlunoAntiga.Matricula)
         }
 
     }, [])
@@ -31,40 +31,40 @@ export default function FormPessoa({ navigation, route }) {
 
     function salvar() {
 
-        if (nome === '' || matricula === '' || turno === '' || curso === '') {
+        if (Nome === '' || Turno === '' || Sexo === '' || Matricula === '') {
             setShowMensagemErro(true)
         } else {
             setShowMensagemErro(false)
 
-            const novaPessoa = {
-                nome: nome,
-                matricula: matricula,
-                turno: turno,
-                curso: curso
+            const novaAluno = {
+                Nome: Nome,
+                Turno: Turno,
+                Sexo: Sexo,
+                Matricula: Matricula,
             }
 
-            const objetoEmString = JSON.stringify(novaPessoa)
-            console.log("🚀 ~ file: FormPessoa.js:47 ~ salvar ~ objetoEmString:", objetoEmString)
+            const objetoEmString = JSON.stringify(novaAluno)
+            console.log("🚀 ~ file: FormAluno.js:47 ~ salvar ~ objetoEmString:", objetoEmString)
 
             console.log(typeof (objetoEmString))
 
             const objeto = JSON.parse(objetoEmString)
-            console.log("🚀 ~ file: FormPessoa.js:52 ~ salvar ~ objeto:", objeto)
+            console.log("🚀 ~ file: FormAluno.js:52 ~ salvar ~ objeto:", objeto)
 
             console.log(typeof (objeto))
 
 
-            if (pessoaAntiga) {
-                acao(pessoaAntiga, novaPessoa)
+            if (AlunoAntiga) {
+                acao(AlunoAntiga, novaAluno)
             } else {
-                acao(novaPessoa)
+                acao(novaAluno)
             }
 
 
 
             Toast.show({
                 type: 'success',
-                text1: 'Pessoa salva com sucesso!'
+                text1: 'Aluno salva com sucesso!'
             })
 
             navigation.goBack()
@@ -76,35 +76,40 @@ export default function FormPessoa({ navigation, route }) {
     return (
         <View style={styles.container}>
 
-            <Text variant='titleLarge' style={styles.title} >{pessoaAntiga ? 'Editar Pessoa' : 'Adicionar Pessoa'}</Text>
+            <Text variant='titleLarge' style={styles.title} >{AlunoAntiga ? 'Editar Aluno' : 'Adicionar Aluno'}</Text>
 
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
-                    label={'Nome'}
+                    label={'Nome do Aluno'}
                     mode='outlined'
-                    value={nome}
+                    value={Nome}
                     onChangeText={text => setNome(text)}
                     onFocus={() => setShowMensagemErro(false)}
                 />
-
                 <TextInput
                     style={styles.input}
-                    label={'matricula'}
+                    label={'Turno do Aluno'}
                     mode='outlined'
-                    keyboardType='numeric'
-                    value={matricula}
-                    onChangeText={text => setmatricula(text)}
+                    value={Turno}
+                    onChangeText={text => setTurno(text)}
                     onFocus={() => setShowMensagemErro(false)}
                 />
-
                 <TextInput
                     style={styles.input}
-                    label={'turno '}
+                    label={'Sexo do Aluno'}
                     mode='outlined'
-                    keyboardType='ascii-capable'
-                    value={turno}
-                    onChangeText={text => setturno(text)}
+                    value={Sexo}
+                    onChangeText={text => setSexo(text)}
+                    onFocus={() => setShowMensagemErro(false)}
+                />
+                <TextInput
+                    style={styles.input}
+                    label={'Matricula do Aluno'}
+                    mode='outlined'
+                    keyboardType='numeric'
+                    value={Matricula}
+                    onChangeText={text => setMatricula(text)}
                     onFocus={() => setShowMensagemErro(false)}
                 />
 
@@ -118,7 +123,7 @@ export default function FormPessoa({ navigation, route }) {
             <View style={styles.buttonContainer}>
 
                 <Button
-                    style={styles.button}
+                    style={styles.button1}
                     mode='contained-tonal'
                     onPress={() => navigation.goBack()}
                 >
@@ -150,11 +155,15 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        margin: 10
-    },
+        fontSize: 25,
+        margin: 10,
+        color: '#1273DE',
+        fontFamily: 'serif',
+      },
     inputContainer: {
         width: '90%',
-        flex: 1
+        flex: 1,
+        
     },
     input: {
         margin: 10
@@ -166,6 +175,11 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     button: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#00FF22',
+    },
+    button1: {
+        flex: 1,
+        backgroundColor: '#61E4F5',
     }
 })

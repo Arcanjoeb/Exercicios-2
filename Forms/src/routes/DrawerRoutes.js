@@ -10,20 +10,23 @@ import StackPessoasAsyncStorage from '../screens/PessoasAsyncStorage/StackPessoa
 import StackPessoasFormularioAltoNivel from '../screens/PessoasFormularioAltoNivel/StackPessoasFormularioAltoNivel'
 import Cadastro from '../screens/Cadastro/Cadastro'
 import StackTarefasAsyncStorage from '../screens/TarefasAsyncStorage/StackTarefasAsyncStorage'
+import StackAlunosAsyncStorage from '../screens/AlunosAsyncStorage/StackAlunosAsyncStorage'
 
 const Drawer = createDrawerNavigator()
 
 export default function DrawerRoutes() {
     return (
-        <Drawer.Navigator initialRouteName='Cadastro'>
+        <Drawer.Navigator initialRouteName='AlunosAsyncStorage'>
 
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Carros" component={ListaCarros} />
             <Drawer.Screen name="CarrosAsyncStorage" component={ListaCarrosAsyncStorage} />
             <Drawer.Screen name="Alunos" component={StackPessoas} />
+            <Drawer.Screen name="AlunosAsyncStorage" component={StackAlunosAsyncStorage} />
             <Drawer.Screen name="PessoasAsyncStorage" component={StackPessoasAsyncStorage} />
             <Drawer.Screen name="FormularioAltoNivel" component={StackPessoasFormularioAltoNivel} />
             <Drawer.Screen name="TarefasAsyncStorage" component={StackTarefasAsyncStorage} />
+            
 
             <Drawer.Screen name="Cadastro" component={Cadastro} />
 

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
-import { Button, Card, Dialog, FAB, MD3Colors, Portal, Text } from 'react-native-paper'
+import { Button, Card, Dialog, FAB, Portal, Text } from 'react-native-paper'
 import Toast from 'react-native-toast-message'
 
 
